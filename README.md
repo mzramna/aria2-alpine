@@ -9,6 +9,7 @@ Example:
 docker run --rm -p 6800:6800 --name aria2 -d \
 -e RPC_SECRET=xxx \
 -v $HOME/Downloads:/downloads \
+-v $HOME/Documents/Aria2configs:/config \
 ndthuan/aria2-alpine
 ```
 
