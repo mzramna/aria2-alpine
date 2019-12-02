@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > /etc/aria2.conf <<EOF
+cat > ${CONFIG_FOLDER:-/config}/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
 rpc-secret=${RPC_SECRET:-}
