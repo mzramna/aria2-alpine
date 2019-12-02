@@ -5,8 +5,8 @@ enable-rpc=true
 rpc-listen-all=true
 rpc-secret=${RPC_SECRET:-}
 dir=${DOWNLOAD_DIR:-/downloads}
-log=${DOWNLOAD_DIR:-/downloads}/aria2.log
-max-concurrent-downloads=${CONCURRENT_DOWNLOADS:-4}
+log=${CONFIG_FOLDER:-/config}/aria2.log
+max-concurrent-downloads=${CONCURRENT_DOWNLOADS:-10}
 split=${SPLIT:-4}
 max-connection-per-server=${CONNECTIONS_PER_SERVER:-4}
 user-agent=${USER_AGENT:-}
@@ -28,6 +28,9 @@ min-split-size=${MIN_SPLIT_SIZE:-10M}
 continue=${CONTINUE:-true}
 max-overall-download-limit=0
 max-overall-upload-limit=1K
+dht-file-path=${CONFIG_FOLDER:-/config}/dht.dat
+dht-file-path6=${CONFIG_FOLDER:-/config}/dht6.dat
+save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
 
 
 EOF
