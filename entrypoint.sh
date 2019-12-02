@@ -14,6 +14,22 @@ file-allocation=${FILE_ALLOCATION:-none}
 allow-overwrite=${ALLOW_OVERWRITE:-true}
 auto-file-renaming=${AUTO_FILE_RENAMING:-false}
 
+disable-ipv6=true
+
+input-file=${CONFIG_FOLDER:-/config}/aria2.session
+save-session=${CONFIG_FOLDER:-/config}/aria2.session
+
+log-level=${LOG_LEVEL:-warn}
+enable-http-pipelining=${HTTP_PIPELINE:-true}
+
+max-connection-per-server=${MAX_CONNECTION_PER_SERVER:-10}
+min-split-size=${MIN_SPLIT_SIZE:-10M}
+
+continue=${CONTINUE:-true}
+max-overall-download-limit=0
+max-overall-upload-limit=1K
+
+
 EOF
 
 exec "$@"
