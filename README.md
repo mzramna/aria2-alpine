@@ -3,7 +3,7 @@ Docker image for Aria2 RPC daemon based on the super lightweight Alpine Linux.
 
 ## Usage
 Docker image: `ndthuan/aria2-alpine`
-
+the tag RPC_SECRET has to recive an value,it is mandatory to work
 Example:
 ```bash
 docker run --rm -p 6800:6800 --name aria2 -d \
