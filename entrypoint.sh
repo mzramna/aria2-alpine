@@ -13,26 +13,20 @@ user-agent=${USER_AGENT:-}
 file-allocation=${FILE_ALLOCATION:-none}
 allow-overwrite=${ALLOW_OVERWRITE:-true}
 auto-file-renaming=${AUTO_FILE_RENAMING:-false}
-
 disable-ipv6=true
-
 input-file=${CONFIG_FOLDER:-/config}/aria2.session
 save-session=${CONFIG_FOLDER:-/config}/aria2.session
-
 log-level=${LOG_LEVEL:-warn}
 enable-http-pipelining=${HTTP_PIPELINE:-true}
-
-max-connection-per-server=${MAX_CONNECTION_PER_SERVER:-10}
 min-split-size=${MIN_SPLIT_SIZE:-10M}
-
 continue=${CONTINUE:-true}
-max-overall-download-limit=0
-max-overall-upload-limit=1K
+max-overall-download-limit=${MAX_OVERALL_DOWNLOAD_LIMIT:-0}
+max-overall-upload-limit=${MAX_OVERALL_UPLOAD_LIMIT:-1K}
 dht-file-path=${CONFIG_FOLDER:-/config}/dht.dat
 dht-file-path6=${CONFIG_FOLDER:-/config}/dht6.dat
 save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
---on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
---on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
+on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
+on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 EOF
 
 cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
@@ -43,8 +37,8 @@ cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
 # $3 is the path of the first file.
  
 DOWNLOAD=${DOWNLOAD_DIR:-/downloads} # no trailing slash!
-COMPLETE=${DOWNLOAD_DIR:-/downloads}/download_complete # no trailing slash!
-LOG=/config/mvcompleted.log
+COMPLETE=${COMPLETE_DOWNLOAD_DIR:-/downloads/download_complete} # no trailing slash!
+LOG=${CONFIG_FOLDER:-/config}/mvcompleted.log
 SRC=$3
  
 if [ "$2" == "0" ]; then
