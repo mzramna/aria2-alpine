@@ -35,7 +35,7 @@ save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
 --on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 EOF
 
-cat > ${CONFIG_FOLDER:-/config}/aria2.conf <<EOF
+cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
 #!/bin/sh
  
 # $1 is gid.
