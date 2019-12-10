@@ -14,7 +14,7 @@ file-allocation=${FILE_ALLOCATION:-none}
 allow-overwrite=${ALLOW_OVERWRITE:-true}
 auto-file-renaming=${AUTO_FILE_RENAMING:-false}
 disable-ipv6=true
-input-file=${CONFIG_FOLDER:-/config}/aria2.session
+input-file=${CONFIG_FOLDER:-/config}/aria2.input
 save-session=${CONFIG_FOLDER:-/config}/aria2.session
 log-level=${LOG_LEVEL:-warn}
 enable-http-pipelining=${HTTP_PIPELINE:-true}
@@ -61,5 +61,9 @@ while true; do
 done
 EOF
 
-
+touch ${CONFIG_FOLDER:-/config}/dht.dat
+touch ${CONFIG_FOLDER:-/config}/aria2.session
+touch ${CONFIG_FOLDER:-/config}/aria2.input
+touch ${CONFIG_FOLDER:-/config}/dht6.dat
+${CONFIG_FOLDER:-/config}/cookies.dat
 exec "$@"
