@@ -18,6 +18,8 @@ it will automaticaly move any completed download into the download folder to the
 First, you might want to check out the comprehensive [aria2 configuration docs](https://aria2.github.io/manual/en/html/aria2c.html) along with checking env vars supported by this image:
 * `CONFIG_FOLDER`: maps to aria2 config folder into container 
 * `DOWNLOAD_DIR`: maps to aria2's [--dir](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-d) config, where inside the container to put your downloads (default: `/downloads`). You'd rather mount downloads directory on your host to `/downloads` than changing this default value.
+* `DOWNLOAD_SUBFOLDER`: add an subfolder to `DOWNLOAD_DIR` parameter,useful to organize host folders,even more with the `COMPLETE_DOWNLOAD_DIR` parameter (default: `/`). 
+* `COMPLETE_DOWNLOAD_DIR`: sets the finished downloads output folder,when completed,torrents and downloads are moved to this folder (default: `/downloads/download_complete`).
 * `CONCURRENT_DOWNLOADS`: maps to aria2's [--max-concurrent-downloads](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-j), number of concurrent downloads, default: `4`.
 * `CONNECTIONS_PER_SERVER`: maps to aria2 [--max-connection-per-server](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-x), this affects the `SPLIT` config down below, default: `4`.
 * `SPLIT`: maps to aria2's [--split](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-s), maximum number of active connections when downloading a file, default: `4`.
