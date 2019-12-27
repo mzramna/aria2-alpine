@@ -4,7 +4,7 @@ cat > ${CONFIG_FOLDER:-/config}/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
 rpc-secret=${RPC_SECRET:-}
-dir=${DOWNLOAD_DIR:-/downloads}
+dir=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-/}
 log=${CONFIG_FOLDER:-/config}/aria2.log
 max-concurrent-downloads=${CONCURRENT_DOWNLOADS:-10}
 split=${SPLIT:-4}
@@ -36,7 +36,7 @@ cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
 # \$2 is the number of files.
 # \$3 is the path of the first file.
  
-DOWNLOAD=${DOWNLOAD_DIR:-/downloads} # no trailing slash!
+DOWNLOAD=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-/} # no trailing slash!
 COMPLETE=${COMPLETE_DOWNLOAD_DIR:-/downloads/download_complete} # no trailing slash!
 LOG=${CONFIG_FOLDER:-/config}/mvcompleted.log
 SRC=\$3
@@ -64,5 +64,5 @@ touch ${CONFIG_FOLDER:-/config}/dht.dat
 touch ${CONFIG_FOLDER:-/config}/aria2.session
 touch ${CONFIG_FOLDER:-/config}/aria2.input
 touch ${CONFIG_FOLDER:-/config}/dht6.dat
-${CONFIG_FOLDER:-/config}/cookies.dat
+touch ${CONFIG_FOLDER:-/config}/cookies.dat
 exec "$@"
