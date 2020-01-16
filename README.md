@@ -35,3 +35,5 @@ First, you might want to check out the comprehensive [aria2 configuration docs](
 * `CONTINUE`: maps to aria2's [--continue](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-c), continue download automaticaly, default: `true`.
 * `MAX_OVERALL_DOWNLOAD_LIMIT`: maps to aria2's [--max-overall-download-limit](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-max-overall-download-limit), the maximum speed that the container will use,limiting every torrent download speed,0 means unlimited, default: `0`.
 * `MAX_OVERALL_UPLOAD_LIMIT`: maps to aria2's [--max-overall-upload-limit](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-max-overall-upload-limit), the maximum speed that the container will use,limiting every torrent upload speed,1K means 1kbps, default: `1K`.
+* `SEED_TIME`: maps to aria2's [--seed-time](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-seed-time), the time after a torrent has finished that it will keep seeding,the time is given in minutes, default: `30`.
+
