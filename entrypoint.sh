@@ -3,7 +3,7 @@
 cat > ${CONFIG_FOLDER:-/config}/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
-rpc-secret=${RPC_SECRET:-}
+rpc-secret=${RPC_SECRET:-pass}
 dir=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-}
 log=${CONFIG_FOLDER:-/config}/aria2.log
 max-concurrent-downloads=${CONCURRENT_DOWNLOADS:-10}
@@ -22,6 +22,7 @@ min-split-size=${MIN_SPLIT_SIZE:-10M}
 continue=${CONTINUE:-true}
 max-overall-download-limit=${MAX_OVERALL_DOWNLOAD_LIMIT:-0}
 max-overall-upload-limit=${MAX_OVERALL_UPLOAD_LIMIT:-1K}
+seed-time=${SEED_TIME:-30}
 dht-file-path=${CONFIG_FOLDER:-/config}/dht.dat
 dht-file-path6=${CONFIG_FOLDER:-/config}/dht6.dat
 save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
