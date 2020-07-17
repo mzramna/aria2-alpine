@@ -24,6 +24,7 @@ max-overall-download-limit=${MAX_OVERALL_DOWNLOAD_LIMIT:-0}
 max-overall-upload-limit=${MAX_OVERALL_UPLOAD_LIMIT:-1K}
 seed-time=${SEED_TIME:-30}
 bt-remove-unselected-file=${REMOVE_UNSELECTED:true}
+bt-save-metadata=${SAVE_METADATA:true}
 dht-file-path=${CONFIG_FOLDER:-/config}/dht.dat
 dht-file-path6=${CONFIG_FOLDER:-/config}/dht6.dat
 save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
