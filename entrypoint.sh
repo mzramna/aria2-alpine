@@ -5,7 +5,7 @@ enable-rpc=true
 rpc-listen-all=true
 rpc-secret=${RPC_SECRET:-pass}
 dir=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-}
-log=${CONFIG_FOLDER:-/config}/aria2.log
+log=/config/aria2.log
 max-concurrent-downloads=${CONCURRENT_DOWNLOADS:-10}
 split=${SPLIT:-4}
 max-connection-per-server=${CONNECTIONS_PER_SERVER:-4}
@@ -14,8 +14,8 @@ file-allocation=${FILE_ALLOCATION:-none}
 allow-overwrite=${ALLOW_OVERWRITE:-true}
 auto-file-renaming=${AUTO_FILE_RENAMING:-false}
 disable-ipv6=true
-input-file=${CONFIG_FOLDER:-/config}/aria2.input
-save-session=${CONFIG_FOLDER:-/config}/aria2.session
+input-file=/config/aria2.input
+save-session=/config/aria2.session
 log-level=${LOG_LEVEL:-warn}
 enable-http-pipelining=${HTTP_PIPELINE:-true}
 min-split-size=${MIN_SPLIT_SIZE:-10M}
@@ -25,11 +25,11 @@ max-overall-upload-limit=${MAX_OVERALL_UPLOAD_LIMIT:-1K}
 seed-time=${SEED_TIME:-30}
 bt-remove-unselected-file=${REMOVE_UNSELECTED:true}
 bt-save-metadata=${SAVE_METADATA:true}
-dht-file-path=${CONFIG_FOLDER:-/config}/dht.dat
-dht-file-path6=${CONFIG_FOLDER:-/config}/dht6.dat
-save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
-on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
-on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
+dht-file-path=/config/dht.dat
+dht-file-path6=/config/dht6.dat
+save-cookies=/config/cookies.dat
+on-bt-download-complete=/config/mvcompleted.sh
+on-download-complete=/config/mvcompleted.sh
 EOF
 fi
 if [ ! -e "/config/mvcompleted.sh" ];then
@@ -64,10 +64,20 @@ while true; do
 done
 EOF
 fi
+if [ ! -e "/config/dat.dat" ];then
 touch /config/dht.dat
+fi
+if [ ! -e "/config/aria2.session" ];then
 touch /config/aria2.session
+fi
+if [ ! -e "/config/aria2.input" ];then
 touch /config/aria2.input
+fi
+if [ ! -e "/config/dht6.dat" ];then
 touch /config/dht6.dat
+fi
+if [ ! -e "/config/cookies.dat" ];then
 touch /config/cookies.dat
+fi
 exec "$@"
 #aria2c --conf-path=/config/aria2.conf
