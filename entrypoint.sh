@@ -1,5 +1,5 @@
 #!/bin/sh
-
+if [ ! test -f "/config/aria2.conf"];then
 cat > /config/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
@@ -31,7 +31,8 @@ save-cookies=${CONFIG_FOLDER:-/config}/cookies.dat
 on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 EOF
-
+fi
+if [ ! test -f "/config/mvcompleted.sh"];then
 cat > /config/mvcompleted.sh <<EOF
 #!/bin/sh
  
@@ -62,10 +63,11 @@ while true; do
   fi
 done
 EOF
-
+fi
 touch /config/dht.dat
 touch /config/aria2.session
 touch /config/aria2.input
 touch /config/dht6.dat
 touch /config/cookies.dat
 exec "$@"
+aria2c --conf-path=/config/aria2.conf
