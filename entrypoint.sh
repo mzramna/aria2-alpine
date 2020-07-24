@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ ! -f "/config/aria2.conf" ];then
 cat > /config/aria2.conf <<EOF
 enable-rpc=true
@@ -70,4 +70,4 @@ touch /config/aria2.input
 touch /config/dht6.dat
 touch /config/cookies.dat
 exec "$@"
-aria2c --conf-path=/config/aria2.conf
+#aria2c --conf-path=/config/aria2.conf
