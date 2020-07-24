@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cat > ${CONFIG_FOLDER:-/config}/aria2.conf <<EOF
+cat > /config/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
 rpc-secret=${RPC_SECRET:-pass}
@@ -32,7 +32,7 @@ on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 EOF
 
-cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
+cat > /config/mvcompleted.sh <<EOF
 #!/bin/sh
  
 # \$1 is gid.
@@ -41,7 +41,7 @@ cat > ${CONFIG_FOLDER:-/config}/mvcompleted.sh <<EOF
  
 DOWNLOAD=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-} # no trailing slash!
 COMPLETE=${COMPLETE_DOWNLOAD_DIR:-/downloads/download_complete} # no trailing slash!
-LOG=${CONFIG_FOLDER:-/config}/mvcompleted.log
+LOG=/config/mvcompleted.log
 SRC=\$3
  
 if [ "\$2" == "0" ]; then
@@ -63,9 +63,9 @@ while true; do
 done
 EOF
 
-touch ${CONFIG_FOLDER:-/config}/dht.dat
-touch ${CONFIG_FOLDER:-/config}/aria2.session
-touch ${CONFIG_FOLDER:-/config}/aria2.input
-touch ${CONFIG_FOLDER:-/config}/dht6.dat
-touch ${CONFIG_FOLDER:-/config}/cookies.dat
+touch /config/dht.dat
+touch /config/aria2.session
+touch /config/aria2.input
+touch /config/dht6.dat
+touch /config/cookies.dat
 exec "$@"

@@ -16,7 +16,6 @@ it will automaticaly move any completed download into the download folder to the
 
 ## Supported environment variables
 First, you might want to check out the comprehensive [aria2 configuration docs](https://aria2.github.io/manual/en/html/aria2c.html) along with checking env vars supported by this image:
-* `CONFIG_FOLDER`: maps to aria2 config folder into container , it has to be an subfolder, in other words,the folder should not exist,but all the path to it has to exist,otherwise the container will not work,it has to be used with the parameter `--build-arg` into docker build,it has to be the same in docker build and docker create/run
 * `DOWNLOAD_DIR`: maps to aria2's [--dir](https://aria2.github.io/manual/en/html/aria2c.html#cmdoption-d) config, where inside the container to put your downloads (default: `/downloads`). You'd rather mount downloads directory on your host to `/downloads` than changing this default value.
 * `DOWNLOAD_SUBFOLDER`: add an subfolder to `DOWNLOAD_DIR` parameter,useful to organize host folders,even more with the `COMPLETE_DOWNLOAD_DIR` parameter (default: `/`). 
 * `COMPLETE_DOWNLOAD_DIR`: sets the finished downloads output folder,when completed,torrents and downloads are moved to this folder (default: `/downloads/download_complete`).
