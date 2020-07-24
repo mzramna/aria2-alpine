@@ -1,5 +1,5 @@
 #!/bin/sh
-if [ ! -f "/config/aria2.conf" ];then
+if [ ! -e "/config/aria2.conf" ];then
 cat > /config/aria2.conf <<EOF
 enable-rpc=true
 rpc-listen-all=true
@@ -32,7 +32,7 @@ on-bt-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 on-download-complete=${CONFIG_FOLDER:-/config}/mvcompleted.sh
 EOF
 fi
-if [ ! -f "/config/mvcompleted.sh" ];then
+if [ ! -e "/config/mvcompleted.sh" ];then
 cat > /config/mvcompleted.sh <<EOF
 #!/bin/sh
  
