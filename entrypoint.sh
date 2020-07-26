@@ -14,7 +14,7 @@ file-allocation=${FILE_ALLOCATION:-none}
 allow-overwrite=${ALLOW_OVERWRITE:-true}
 auto-file-renaming=${AUTO_FILE_RENAMING:-false}
 disable-ipv6=true
-input-file=/config/aria2.input
+input-file=/config/aria2.session
 save-session=/config/aria2.session
 log-level=${LOG_LEVEL:-warn}
 enable-http-pipelining=${HTTP_PIPELINE:-true}
@@ -25,8 +25,6 @@ max-overall-upload-limit=${MAX_OVERALL_UPLOAD_LIMIT:-1K}
 seed-time=${SEED_TIME:-30}
 bt-remove-unselected-file=${REMOVE_UNSELECTED:true}
 bt-save-metadata=${SAVE_METADATA:true}
-dht-file-path=/config/dht.dat
-dht-file-path6=/config/dht6.dat
 save-cookies=/config/cookies.dat
 on-bt-download-complete=/config/mvcompleted.sh
 on-download-complete=/config/mvcompleted.sh
@@ -40,7 +38,7 @@ cat > /config/mvcompleted.sh <<EOF
 # \$2 is the number of files.
 # \$3 is the path of the first file.
  
-DOWNLOAD=${DOWNLOAD_DIR:-/downloads}${DOWNLOAD_SUBFOLDER:-} # no trailing slash!
+DOWNLOAD=/downloads${DOWNLOAD_SUBFOLDER:-} # no trailing slash!
 COMPLETE=${COMPLETE_DOWNLOAD_DIR:-/downloads/download_complete} # no trailing slash!
 LOG=/config/mvcompleted.log
 SRC=\$3
@@ -64,17 +62,18 @@ while true; do
 done
 EOF
 fi
-if [ ! -e "/config/dat.dat" ];then
-touch /config/dht.dat
-fi
 if [ ! -e "/config/aria2.session" ];then
 touch /config/aria2.session
 fi
+if [ ! -e "/config/cookies.dat" ];then
+touch /config/cookies.dat
+fi
+exec "$@"
+#aria2c --conf-path=/config/aria2.conf
+ig/aria2.session
+fi
 if [ ! -e "/config/aria2.input" ];then
 touch /config/aria2.input
-fi
-if [ ! -e "/config/dht6.dat" ];then
-touch /config/dht6.dat
 fi
 if [ ! -e "/config/cookies.dat" ];then
 touch /config/cookies.dat
