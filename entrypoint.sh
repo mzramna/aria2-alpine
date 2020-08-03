@@ -45,7 +45,7 @@ cat > /config/mvcompleted.sh <<EOF
    SRC=\$3
 
    if [ "\$2" == "0" ]; then
-     echo `\date` "INFO  no file to move for" "\$1". >> "\$LOG"
+     echo $(\date) "INFO  no file to move for" "\$1". >> "\$LOG"
      exit 0
    fi
 
@@ -55,7 +55,7 @@ cat > /config/mvcompleted.sh <<EOF
        mv -fv "\$SRC" "\$COMPLETE" >> "\$LOG" 2>&1
        exit $?
      elif [ "\$DIR" == "/" -o "\$DIR" == "." ]; then
-       echo `\date` ERROR "\$3" not under "\$DOWNLOAD". >> "\$LOG"
+       echo $(\date) ERROR "\$3" not under "\$DOWNLOAD". >> "\$LOG"
        exit 1
      else
        SRC=\$DIR
