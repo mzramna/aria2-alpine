@@ -32,7 +32,7 @@ EOF
 fi
 
 if [ ! -e "/config/mvcompleted.sh" ];then
-cat > /config/mvcompleted.sh <<EOF
+	cat > /config/mvcompleted.sh <<EOF
    #!/bin/sh
 
    # \$1 is gid.
@@ -45,31 +45,30 @@ cat > /config/mvcompleted.sh <<EOF
    SRC=\$3
 
    if [ "\$2" == "0" ]; then
-     echo $(\date) "INFO  no file to move for" "\$1". >> "\$LOG"
+     echo $("date") "INFO  no file to move for" "\$1". >> "\$LOG"
      exit 0
    fi
 
    while true; do
-     DIR=`dirname "\$SRC"`
+     DIR=$(dirname "\$SRC")
      if [ "\$DIR" == "\$DOWNLOAD" ]; then
        mv -fv "\$SRC" "\$COMPLETE" >> "\$LOG" 2>&1
        exit $?
      elif [ "\$DIR" == "/" -o "\$DIR" == "." ]; then
-       echo $(\date) ERROR "\$3" not under "\$DOWNLOAD". >> "\$LOG"
+       echo $("date") ERROR "\$3" not under "\$DOWNLOAD". >> "\$LOG"
        exit 1
      else
        SRC=\$DIR
      fi
    done
-   EOF
+EOF
 fi
 
 if [ ! -e "/config/aria2.session" ];then
-     touch /config/aria2.session
+	touch /config/aria2.session
 fi
-
 if [ ! -e "/config/cookies.dat" ];then
-     touch /config/cookies.dat
+	touch /config/cookies.dat
 fi
 exec "$@"
 #aria2c --conf-path=/config/aria2.conf
