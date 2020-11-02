@@ -65,15 +65,11 @@ cat > /config/mvcompleted.sh <<EOF
 fi
 
 if [ ! -e "/config/aria2.session" ];then
-touch /config/aria2.session
+     touch /config/aria2.session
 fi
+
 if [ ! -e "/config/cookies.dat" ];then
-touch /config/cookies.dat
-fi
-exec "$@"
-fi
-if [ ! -e "/config/cookies.dat" ];then
-touch /config/cookies.dat
+     touch /config/cookies.dat
 fi
 exec "$@"
 #aria2c --conf-path=/config/aria2.conf
